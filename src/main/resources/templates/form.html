@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Input Mahasiswa</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f9; margin: 20px; }
+        .container { max-width: 800px; }
+        h2 { border-bottom: 1px solid #ddd; padding-bottom: 10px; font-size: 1.2rem; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
+        input[type="text"] { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .radio-container { display: flex; align-items: center; margin-bottom: 10px; }
+        .radio-container span { width: 150px; }
+        .radio-container input { margin-left: 100px; }
+        .btn-submit { background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+        .back-link { display: block; margin-top: 15px; color: #007bff; text-decoration: none; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Form Input Mahasiswa</h2>
+
+    <form th:action="@{/save-user}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label>Nama:</label>
+            <input type="text" th:field="*{nama}" required>
+        </div>
+
+        <div class="form-group">
+            <label>NIM:</label>
+            <input type="text" th:field="*{nim}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Jenis Kelamin:</label>
+
+            <div class="radio-container">
+                <span>Laki-laki</span>
+                <input type="radio" th:field="*{gender}" value="Laki-laki" required>
+            </div>
+
+            <div class="radio-container">
+                <span>Perempuan</span>
+                <input type="radio" th:field="*{gender}" value="Perempuan">
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+
+    <a th:href="@{/home}" class="back-link">Kembali ke Home</a>
+</div>
+
+</body>
+</html>
